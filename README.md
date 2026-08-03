@@ -276,6 +276,10 @@ _posts/                 데모와 사용 가이드
 .github/workflows/      검증·배포
 ```
 
+## 기여
+
+버그 재현, 문서 교정, 접근성·반응형 개선과 설정 일반화를 받습니다. 변경 범위와 로컬 검증 절차는 [CONTRIBUTING.md](CONTRIBUTING.md)에서 확인할 수 있습니다.
+
 ## 라이선스
 
 [MIT](LICENSE). 이미지 출처와 고지는 [NOTICE.md](NOTICE.md)에 정리되어 있습니다.
