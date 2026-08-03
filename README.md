@@ -242,6 +242,17 @@ python3 scripts/verify_site.py _site
 node --check assets/js/site.js
 ```
 
+Pages URL까지 재현하는 production 검증:
+
+```bash
+bundle exec ruby scripts/build_site.rb \
+  --url https://username.github.io \
+  --baseurl /repository
+python3 scripts/verify_site.py _site \
+  --baseurl /repository \
+  --expected-origin https://username.github.io
+```
+
 `verify_site.py` 검사 범위:
 
 - `index.html`, `404.html`, `feed.xml`, `sitemap.xml`, `posts.json`

@@ -26,6 +26,7 @@ class DocumentParser(HTMLParser):
         super().__init__(convert_charrefs=True)
         self.main_count = 0
         self.references: list[tuple[str, str]] = []
+        self.canonical_urls: list[str] = []
 
     def handle_starttag(self, tag: str, attrs: list[tuple[str, str | None]]) -> None:
         if tag == "main":
@@ -38,6 +39,8 @@ class DocumentParser(HTMLParser):
         for name, value in attrs:
             if name == attribute_name and value:
                 self.references.append((tag, value))
+                if tag == "link" and name == "href" and dict(attrs).get("rel") == "canonical":
+                    self.canonical_urls.append(value)
 
 
 def normalize_baseurl(value: str) -> str:
@@ -66,7 +69,7 @@ def resolve_target(site_dir: Path, source: Path, reference: str, baseurl: str) -
     return target.resolve()
 
 
-def validate(site_dir: Path, baseurl: str) -> list[str]:
+def validate(site_dir: Path, baseurl: str, expected_origin: str) -> list[str]:
     errors: list[str] = []
     site_root = site_dir.resolve()
 
@@ -90,6 +93,17 @@ def validate(site_dir: Path, baseurl: str) -> list[str]:
 
         if parser.main_count != 1:
             errors.append(f"{html_path.relative_to(site_dir)}: expected one <main>, found {parser.main_count}")
+
+        if expected_origin:
+            expected_prefix = expected_origin.rstrip("/") + baseurl + "/"
+            if len(parser.canonical_urls) != 1:
+                errors.append(
+                    f"{html_path.relative_to(site_dir)}: expected one canonical URL, found {len(parser.canonical_urls)}"
+                )
+            elif not parser.canonical_urls[0].startswith(expected_prefix):
+                errors.append(
+                    f"{html_path.relative_to(site_dir)}: canonical URL must start with {expected_prefix}"
+                )
 
         for tag, reference in parser.references:
             for placeholder in PLACEHOLDERS:
@@ -120,13 +134,18 @@ def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("site_dir", type=Path)
     parser.add_argument("--baseurl", default="")
+    parser.add_argument("--expected-origin", default="")
     args = parser.parse_args()
 
     if not args.site_dir.is_dir():
         print(f"site directory not found: {args.site_dir}", file=sys.stderr)
         return 2
 
-    errors = validate(args.site_dir, normalize_baseurl(args.baseurl))
+    errors = validate(
+        args.site_dir,
+        normalize_baseurl(args.baseurl),
+        args.expected_origin.strip(),
+    )
     if errors:
         print("Site verification failed:", file=sys.stderr)
         for error in errors:
