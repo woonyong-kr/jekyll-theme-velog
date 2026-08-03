@@ -4,7 +4,7 @@
 
 ## 시작
 
-Ruby `3.2.9`와 Bundler `2.5.23`을 사용한다.
+Ruby `3.4.10`과 Bundler `2.6.9`를 사용한다. 저장소의 `.ruby-version`과 `Gemfile.lock`을 기준으로 맞춘다.
 
 ```bash
 git clone https://github.com/woonyong-kr/jekyll-theme-velog.git
