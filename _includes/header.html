@@ -45,9 +45,18 @@
       <span class="header-logo__text">{{ header_title }}</span>
     </a>
 
-    {% assign show_github_link = theme.header.show_github_link | default: true %}
-    {% assign show_rss_link = theme.header.show_rss_link | default: true %}
-    {% assign show_theme_toggle = theme.header.show_theme_toggle | default: true %}
+    {% assign show_github_link = true %}
+    {% assign show_rss_link = true %}
+    {% assign show_theme_toggle = true %}
+    {% if theme.header.show_github_link == false %}
+      {% assign show_github_link = false %}
+    {% endif %}
+    {% if theme.header.show_rss_link == false %}
+      {% assign show_rss_link = false %}
+    {% endif %}
+    {% if theme.header.show_theme_toggle == false %}
+      {% assign show_theme_toggle = false %}
+    {% endif %}
     {% if show_github_link or show_rss_link or show_theme_toggle %}
       <nav class="header-actions" aria-label="바로가기">
         {% if show_github_link and resolved_github_url != "" %}

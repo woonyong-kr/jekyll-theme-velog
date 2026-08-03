@@ -50,7 +50,7 @@ GitHub 웹에서 바로 작성하려면:
 
 ## front matter 전체 예시
 
-```md
+````md
 ---
 title: 글 제목을 여기에 씁니다
 description: 글 목록 카드에 보일 한 줄 요약입니다
@@ -162,7 +162,7 @@ def hello():
 ![이미지 설명](이미지 경로)
 
 [링크 텍스트](URL)
-```
+````
 
 YouTube 영상은 iframe으로 직접 삽입할 수 있습니다.
 

@@ -19,7 +19,7 @@ tags:
 
 | 항목 | 필수 여부 | 설명 |
 |---|---|---|
-| Ruby 3.2.x | **필수** | Jekyll은 Ruby 기반입니다 |
+| Ruby 3.4.x | **필수** | Jekyll은 Ruby 기반입니다 |
 | Bundler | **필수** | gem 의존성 관리 도구 |
 | Git | **필수** | 저장소 복제용 |
 | GitHub 토큰 | 선택 | 프로필/기여 그래프 동기화 시 필요 |
@@ -28,7 +28,7 @@ GitHub 연동 없이도 블로그는 정상 작동합니다. 프로필과 잔디
 
 ## Ruby 설치하기
 
-이 저장소는 **Ruby 3.2.9** 기준으로 검증했습니다. `.ruby-version` 파일이 포함되어 있어서 버전 관리자를 쓰면 자동으로 맞춰집니다.
+이 저장소는 **Ruby 3.4.10** 기준으로 검증했습니다. `.ruby-version` 파일이 포함되어 있어서 버전 관리자를 쓰면 자동으로 맞춰집니다.
 
 ### macOS
 
@@ -40,9 +40,9 @@ brew install rbenv ruby-build
 echo 'eval "$(rbenv init -)"' >> ~/.zshrc
 source ~/.zshrc
 
-# Ruby 3.2.9 설치
-rbenv install 3.2.9
-rbenv global 3.2.9
+# Ruby 3.4.10 설치
+rbenv install 3.4.10
+rbenv global 3.4.10
 
 # 버전 확인
 ruby -v
@@ -50,15 +50,15 @@ ruby -v
 
 ### Windows
 
-[RubyInstaller](https://rubyinstaller.org/)에서 **Ruby+Devkit 3.2.x** 버전을 받아 설치합니다.  
+[RubyInstaller](https://rubyinstaller.org/)에서 **Ruby+Devkit 3.4.x** 버전을 받아 설치합니다.
 설치 마지막 단계에서 `MSYS2 development toolchain` 체크박스를 반드시 선택하세요.
 
 ### Linux (Ubuntu/Debian)
 
 ```bash
 sudo apt-get install rbenv
-rbenv install 3.2.9
-rbenv global 3.2.9
+rbenv install 3.4.10
+rbenv global 3.4.10
 ```
 
 ## 저장소 복제 및 의존성 설치
@@ -156,7 +156,7 @@ profile:
 BUNDLE_FORCE_RUBY_PLATFORM=true bundle install
 ```
 
-또는 Ruby 버전이 3.2.x인지 `ruby -v`로 먼저 확인하세요.
+또는 Ruby 버전이 3.4.x인지 `ruby -v`로 먼저 확인하세요.
 
 ---
 
@@ -190,7 +190,7 @@ GitHub 연동을 아직 하지 않은 경우라면 `hero.github_contributions.en
 처음 테마를 가져간 뒤 아래 순서로 진행하면 가장 빠릅니다.
 
 1. `bundle install`
-2. `_config.yml`에서 `title`, `url`, `baseurl` 수정
+2. `_config.yml`에서 `title`, `description` 수정
 3. `_data/profile.yml`에서 기본 이름과 소개 수정
 4. `jekyll serve`로 로컬 미리보기
 5. 만족스러우면 GitHub에 push → 자동 배포

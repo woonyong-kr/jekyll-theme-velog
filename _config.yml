@@ -1,7 +1,9 @@
 title: Velog Style Jekyll Theme
 description: velog 감성의 개발 블로그를 GitHub Pages와 Jekyll로 구성한 오픈소스 starter theme
-url: "https://woonyong-kr.github.io"
-baseurl: "/jekyll-theme-velog"
+# GitHub Pages 배포 시 Actions가 저장소 주소와 baseurl을 자동 주입합니다.
+# 커스텀 도메인을 쓰는 경우에만 url을 직접 지정하세요.
+url: "http://localhost:4000"
+baseurl: ""
 lang: ko-KR
 timezone: Asia/Seoul
 markdown: kramdown
@@ -17,10 +19,10 @@ comments:
   disqus:
     shortname: ""
   giscus:
-    repo: "owner/repository"
-    repo_id: "REPOSITORY_NODE_ID"
+    repo: ""
+    repo_id: ""
     category: "Announcements"
-    category_id: "CATEGORY_NODE_ID"
+    category_id: ""
     mapping: "pathname"
     strict: true
     reactions_enabled: true

@@ -63,10 +63,10 @@ GitHub Pages를 이용한 **무료 개발 블로그**를 만들 수 있습니다
 이 페이지 오른쪽 위 **Fork** 버튼을 클릭합니다.  
 저장소 이름을 정할 때 아래 표를 참고하세요.
 
-| 원하는 주소 | 저장소 이름 | `_config.yml`의 `baseurl` |
-|---|---|---|
-| `username.github.io` | `username.github.io` | `""` (빈값) |
-| `username.github.io/my-blog` | `my-blog` | `"/my-blog"` |
+| 원하는 주소 | 저장소 이름 |
+|---|---|
+| `username.github.io` | `username.github.io` |
+| `username.github.io/my-blog` | `my-blog` |
 
 `username`은 본인 GitHub 아이디입니다.
 
@@ -77,8 +77,8 @@ fork한 저장소에서 `_config.yml` 파일을 열고 연필 아이콘(✏️)�
 ```yml
 title: 내 블로그 이름
 description: 블로그 한 줄 설명
-url: "https://username.github.io"   # 본인 GitHub 아이디로 변경
-baseurl: "/my-blog"                 # 저장소 이름에 맞게 변경
+url: "http://localhost:4000"
+baseurl: ""
 ```
 
 수정 후 **Commit changes**를 누르면 자동 빌드가 시작됩니다.
@@ -87,9 +87,8 @@ baseurl: "/my-blog"                 # 저장소 이름에 맞게 변경
 
 저장소 **Settings → Pages**로 이동해서:
 
-1. Source: `Deploy from a branch`
-2. Branch: `gh-pages`, Folder: `/ (root)`
-3. Save
+1. Source: `GitHub Actions`
+2. Save
 
 빌드가 완료되면 설정한 주소로 블로그에 접속할 수 있습니다. 첫 빌드는 1~2분 정도 걸립니다.
 

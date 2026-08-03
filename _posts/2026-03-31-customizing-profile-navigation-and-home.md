@@ -23,17 +23,16 @@ _data/series.yml      시리즈 제목과 설명
 
 ## `_config.yml` — 사이트 기본 정보
 
-가장 먼저 수정해야 하는 파일입니다. 사이트 주소와 제목이 여기에 들어갑니다.
+가장 먼저 수정해야 하는 파일입니다. 사이트 제목과 외부 연동이 여기에 들어갑니다.
 
 ```yml
 title: 내 개발 블로그
 description: 배운 것을 기록하는 공간
-url: "https://username.github.io"   # 본인 GitHub 아이디로 변경
-baseurl: "/my-blog"                 # 저장소 이름으로 변경
+url: "http://localhost:4000"
+baseurl: ""
 ```
 
-> **`baseurl` 설정이 틀리면 CSS, 이미지, 링크가 모두 깨집니다.**  
-> 저장소 이름이 `my-blog`라면 `baseurl: "/my-blog"`, `username.github.io`라면 `baseurl: ""`로 설정하세요.
+GitHub Pages Actions가 저장소 주소와 하위 경로를 빌드할 때 주입합니다. 커스텀 도메인을 쓰는 경우에만 `url`을 직접 지정합니다.
 
 외부 서비스 연동도 여기서 합니다. 값이 비어 있으면 해당 기능은 자동으로 비활성화됩니다.
 
@@ -155,7 +154,7 @@ series: my-dev-log
 
 fork 직후 아래 순서로 빠르게 바꾸는 게 가장 효율적입니다.
 
-- [ ] `_config.yml` — `title`, `description`, `url`, `baseurl`
+- [ ] `_config.yml` — `title`, `description`, 필요한 외부 연동
 - [ ] `_data/profile.yml` — 이름, 소개, GitHub 링크
 - [ ] `_data/theme.yml` — 헤더 버튼, 탭 노출 여부, `footer.tagline`
 - [ ] `_data/series.yml` — 샘플 시리즈 제거 후 본인 시리즈 추가
